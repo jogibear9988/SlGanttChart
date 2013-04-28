@@ -1,0 +1,40 @@
+﻿<UserControl    x:Class="CoderForRent.Silverlight.GanttExample.PageWithColumnsDefined"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+                xmlns:gantt="clr-namespace:CoderForRent.Silverlight.Charting.Gantt;assembly=CoderForRent.Silverlight.Charting"
+                Width="Auto" Height="Auto">
+    <Grid x:Name="LayoutRoot" Background="White">
+        <gantt:GanttChart x:Name="gantt" Width="Auto" Height="Auto" IsReadOnly="False"  >
+            <gantt:GanttChart.Columns>
+                <gantt:GanttExpanderColumn Binding="{Binding TaskName, Mode=TwoWay}" IsReadOnly="False" Header="Task" />
+                <data:DataGridTextColumn Binding="{Binding Duration}" IsReadOnly="True" Header="Duration" />
+                <gantt:GanttDateColumn Binding="{Binding StartDateFormatted, Mode=TwoWay}" IsReadOnly="False" Header="Start" />
+                <gantt:GanttDateColumn Binding="{Binding EndDateFormatted, Mode=TwoWay}" IsReadOnly="False" Header="End" />
+                <data:DataGridTextColumn Binding="{Binding Resources}" IsReadOnly="False" Header="Resources" />
+            </gantt:GanttChart.Columns>
+            <gantt:GanttChart.ToolTipContentTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Margin="1" Text="Name:" Grid.Column="0" Grid.Row="0" />
+                        <TextBlock Margin="1" Text="{Binding TaskName}" Grid.Column="1" Grid.Row="0" />
+                        <TextBlock Margin="1" Text="Start Date:" Grid.Column="0" Grid.Row="1" />
+                        <TextBlock Margin="1" Text="{Binding StartDateFormatted}" Grid.Column="1" Grid.Row="1" />
+                        <TextBlock Margin="1" Text="End Date:" Grid.Column="0" Grid.Row="2" />
+                        <TextBlock Margin="1" Text="{Binding EndDateFormatted}" Grid.Column="1" Grid.Row="2" />
+                    </Grid>
+                </DataTemplate>
+            </gantt:GanttChart.ToolTipContentTemplate>
+            <TextBlock Text="My Gantt Chart Example" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </gantt:GanttChart>
+    </Grid>
+</UserControl>

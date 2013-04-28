@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="CoderForRent.Silverlight.GanttExample.Web.Services.TaskService" CodeBehind="TaskService.svc.cs" %>

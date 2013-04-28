@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8FCBFF56-239A-404F-9061-5F27F05FED91}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CoderForRent.Silverlight.Charting</RootNamespace>
+    <AssemblyName>CoderForRent.Silverlight.Charting</AssemblyName>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Chart.cs" />
+    <Compile Include="Core\DataGridExtender.cs" />
+    <Compile Include="Core\DateTimeManager.cs" />
+    <Compile Include="Core\DependencyObjectExtender.cs" />
+    <Compile Include="Core\IMouseWheelObserver.cs" />
+    <Compile Include="Core\MouseWheelArgs.cs" />
+    <Compile Include="Core\MouseWheelListener.cs" />
+    <Compile Include="Core\TimeUnit.cs" />
+    <Compile Include="Core\TimeUnitScalar.cs" />
+    <Compile Include="Core\TraverseExtension.cs" />
+    <Compile Include="Core\WriteableBitmapExtensions.cs" />
+    <Compile Include="Core\Zoom.cs" />
+    <Compile Include="Gantt\ExpanderColumn.cs" />
+    <Compile Include="Gantt\GanttChart.cs" />
+    <Compile Include="Gantt\GanttColumnAttribute.cs" />
+    <Compile Include="Gantt\GanttContentPresenter.cs" />
+    <Compile Include="Gantt\GanttDataGrid.cs" />
+    <Compile Include="Gantt\GanttDateColumn.cs" />
+    <Compile Include="Gantt\GanttDependenciesPresenter.cs" />
+    <Compile Include="Gantt\GanttDependency.cs" />
+    <Compile Include="Gantt\GanttDependencyItem.cs" />
+    <Compile Include="Gantt\GanttExpanderColumn.cs" />
+    <Compile Include="Gantt\GanttItem.cs" />
+    <Compile Include="Gantt\GanttItemEventArgs.cs" />
+    <Compile Include="Gantt\GanttNodeSectionEventArgs.cs" />
+    <Compile Include="Gantt\GanttNodeSection.cs" />
+    <Compile Include="Gantt\GanttItemsPresenter.cs" />
+    <Compile Include="Gantt\GanttNode.cs" />
+    <Compile Include="Gantt\GanttPanel.cs" />
+    <Compile Include="Gantt\GanttPanelColumn.cs" />
+    <Compile Include="Gantt\GanttPanelColumnsPresenter.cs" />
+    <Compile Include="Gantt\GanttRow.cs" />
+    <Compile Include="Gantt\GanttRowsPresenter.cs" />
+    <Compile Include="Gantt\HeaderGanttItem.cs" />
+    <Compile Include="Gantt\IGanttNode.cs" />
+    <Compile Include="Gantt\LevelToWidthConverter.cs" />
+    <Compile Include="Gantt\SimpleExpander.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimespanHeader\TimespanHeader.cs" />
+    <Compile Include="TimespanHeader\TimespanHeaderCell.cs" />
+    <Compile Include="TimespanHeader\TimespanHeaderCellsPresenter.cs" />
+    <Compile Include="TimespanHeader\TimespanHeaderRow.cs" />
+    <Compile Include="TimespanHeader\TimespanHeaderRowsPresenter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="themes\generic.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
