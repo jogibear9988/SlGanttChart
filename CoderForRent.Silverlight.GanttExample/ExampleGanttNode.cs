@@ -11,7 +11,7 @@ namespace CoderForRent.Silverlight.GanttExample
 {
     public class ExampleGanttNode : GanttNode
     {
-        [GanttColumnAttribute(ColumnName="Task Name",ColumnIndex=0)]
+        [GanttColumnAttribute(ColumnName="MyTask Name",ColumnIndex=0)]
         public override string TaskName
         {
             get { return base.TaskName; }

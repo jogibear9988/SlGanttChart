@@ -5,10 +5,11 @@
  * */
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace CoderForRent.Silverlight.GanttExample
 {
-	public class Task
+	public class MyTask
 	{
 		public string TaskName { get; set; }
 		public DateTime StartDate { get; set; }
@@ -16,6 +17,6 @@ namespace CoderForRent.Silverlight.GanttExample
 		public double PercentComplete { get; set; }
 		public string Resources { get; set; }
 
-		public List<Task> Children { get; set; }
+		public ObservableCollection<MyTask> Children { get; set; }
 	}
 }
