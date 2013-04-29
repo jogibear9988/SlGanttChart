@@ -275,6 +275,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
             _Columns = new ObservableCollection<DataGridColumn>();
             this.SizeChanged += new SizeChangedEventHandler(GanttChart_SizeChanged);
         
+//This is a Hack
             timer=new DispatcherTimer();
             timer.Tick += timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 2);
@@ -287,6 +288,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
             timer = null;
             Panel.ignoreSameSize = false;
         }
+//end of Hack!!
 
         public override void OnApplyTemplate()
         {
