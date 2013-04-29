@@ -5,6 +5,7 @@
  * */
 
 
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -28,6 +29,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
         }
         protected override Size ArrangeOverride(Size finalSize)
         {
+            Debug.WriteLine("GanttItemsPresenter.ArrangeOverride()");
             for(int i = 0;i<Children.Count;i++) 
             {
 				GanttItem gi = (GanttItem)Children[i];
@@ -64,6 +66,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
         }
         protected override Size MeasureOverride(Size availableSize)
         {
+            Debug.WriteLine("GanttItemsPresenter.MeasureOverride(" + availableSize.ToString() + ")");
 			for (int i = 0; i < Children.Count; i++)
 			{
 				GanttItem gi = (GanttItem)Children[i];

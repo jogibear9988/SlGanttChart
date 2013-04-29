@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,7 +28,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 		}
 		protected override Size ArrangeOverride(Size finalSize)
 		{
-
+            Debug.WriteLine("GanttDependenciesPresenter.ArrangeOverride()");
 			foreach (GanttDependencyItem item in Children)
 			{
 			
@@ -38,6 +39,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 		}
 		protected override Size MeasureOverride(Size availableSize)
 		{
+            Debug.WriteLine("GanttDependenciesPresenter.MeasureOverride()");
 			foreach (GanttDependencyItem item in Children)
 			{
 			
@@ -63,6 +65,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 		#region Internal functions
 		protected internal void Invalidate()
 		{
+            Debug.WriteLine("GanttDependenciesPresenter.Invalidate()");
 			this.Children.Clear();
 
 			foreach (GanttDependency gd in ParentPanel.Dependencies)

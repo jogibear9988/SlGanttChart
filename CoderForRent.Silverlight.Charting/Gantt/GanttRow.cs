@@ -6,7 +6,9 @@
 
 
 using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -91,18 +93,37 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 			ItemsPresenter = (GanttItemsPresenter)GetTemplateChild("ItemsPresenterElement");
 			ItemsPresenter.ParentRow = this;
 		}
+
+	    private Size _oldSize;
+        private Size _oldRetSize;
+	    private int _sameSizeCnt = 0;
 		protected override Size ArrangeOverride(Size finalSize)
 		{
-			if (Node != null)
-				GenerateItems();
-			else
-				ItemsPresenter.Children.Clear();
+            Debug.WriteLine("GanttRow.ArrangeOverride(" + finalSize.ToString() + ")");
+            if (_oldSize != finalSize || _sameSizeCnt != 0)
+            {
+                if (_oldSize != finalSize)
+                    _sameSizeCnt = 1;
+                else
+                    _sameSizeCnt--;
 
-			ItemsPresenter.Arrange(new Rect(0, 0, finalSize.Width, finalSize.Height));
-			return base.ArrangeOverride(finalSize);
+		        _oldSize = finalSize;
+		        if (Node != null)
+		            GenerateItems();
+		        else
+		            ItemsPresenter.Children.Clear();
+
+		        ItemsPresenter.Arrange(new Rect(0, 0, finalSize.Width, finalSize.Height));
+                _oldRetSize = base.ArrangeOverride(finalSize);
+
+		        return _oldRetSize;
+		    }
+
+            return _oldRetSize;
 		}
 		protected override Size MeasureOverride(Size availableSize)
 		{
+            Debug.WriteLine("GanttRow.MeasureOverride()");
 			ItemsPresenter.Measure(availableSize);
 			return base.MeasureOverride(availableSize);
 		}
@@ -197,8 +218,8 @@ namespace CoderForRent.Silverlight.Charting.Gantt
                         if (newDate < item.Section.EndDate)
 						{
 							item.Section.StartDate = newDate;
-							item.InvalidateMeasure();
-
+                            item.InvalidateMeasure();
+                            
 							if(RowIndex > 0)
 								(ParentPanel.RowPresenter.Children[RowIndex - 1] as GanttRow).Invalidate();
 						}
@@ -267,8 +288,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 			{
 				ItemsPresenter.Children.Clear();
 			}
-
-			if (!ItemsValid)
+            else if (!ItemsValid)
 			{
 				ItemsValid = true;
 				ItemsPresenter.Children.Clear();
@@ -312,20 +332,22 @@ namespace CoderForRent.Silverlight.Charting.Gantt
                     }
                 }
 			}
-
 		}
 		#endregion
 
 		#region Internal/Public functions
 		internal void Invalidate()
 		{
+            Debug.WriteLine("GanttRow.Invalidate()");
 			if (ItemsPresenter == null)
 				return;
 
-			this.InvalidateArrange();
+		    ParentPanel.RowsValid = false;
+
+			//this.InvalidateArrange();
 			this.InvalidateMeasure();
 
-			ItemsPresenter.InvalidateArrange();
+			//ItemsPresenter.InvalidateArrange();
 			ItemsPresenter.InvalidateMeasure();
 		}
 		internal TimeSpan GetTimeSpanFromDistance(double distance)

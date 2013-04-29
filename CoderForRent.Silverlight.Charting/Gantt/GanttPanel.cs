@@ -8,11 +8,16 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using CoderForRent.Silverlight.Charting.Core;
 using System.Windows.Media;
+using System.ComponentModel;
 
 namespace CoderForRent.Silverlight.Charting.Gantt
 {
@@ -94,9 +99,18 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 		/// This is the first DateTime represented in the panel.
 		/// </summary>
 		private DateTime _CurrentTime;
-		public DateTime CurrentTime { get { return _CurrentTime; } set { _CurrentTime = value; InvalidateItemPositions(); } }
 
-		internal bool RowsValid { get; set; }
+	    public DateTime CurrentTime
+	    {
+	        get { return _CurrentTime; }
+	        set
+	        {
+	            _CurrentTime = value;
+	            InvalidateItemPositions();
+	        }
+	    }
+
+	    internal bool RowsValid { get; set; }
 
 		private int _TopNodeIndex = 0;
 		internal int TopNodeIndex
@@ -182,26 +196,42 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 		public GanttPanel()
 		{
 			this.DefaultStyleKey = this.GetType();
-			UseLayoutRounding = false;
-
+			UseLayoutRounding = false;        
 		}
-		protected override Size ArrangeOverride(Size finalSize)
-		{
-			GenerateRows(finalSize);
-			Size result = base.ArrangeOverride(finalSize);
 
-			RectangleGeometry r = new RectangleGeometry();
-			r.Rect = new Rect(0 , 0 , finalSize.Width - BorderThickness.Left - BorderThickness.Right, finalSize.Height - BorderThickness.Top - BorderThickness.Bottom);
-			MainElement.Clip = r;
+        protected override Size MeasureOverride(Size availableSize)
+	    {
+            GenerateRows(availableSize);
 
-			return result;
-		}
-		public override void OnApplyTemplate()
+	        return base.MeasureOverride(availableSize);
+	    }
+
+	    protected override Size ArrangeOverride(Size finalSize)
+	    {
+            Debug.WriteLine("GanttPanel.ArrangeOverride(" + finalSize.ToString() + ")");
+	        RectangleGeometry r = new RectangleGeometry();
+	        r.Rect = new Rect(0, 0, finalSize.Width - BorderThickness.Left - BorderThickness.Right,
+	            finalSize.Height - BorderThickness.Top - BorderThickness.Bottom);
+	        MainElement.Clip = r;
+
+	        if (DesignerProperties.IsInDesignTool)
+	        {
+	            return base.ArrangeOverride(finalSize);
+	        }
+            
+	        GenerateRows(finalSize);
+
+	        Size result = base.ArrangeOverride(finalSize);
+
+	        return result;
+	    }
+
+	    public override void OnApplyTemplate()
 		{
 			base.OnApplyTemplate();
 
 			RowPresenter = (GanttRowsPresenter)GetTemplateChild("RowPresenter");
-			RowPresenter.ParentPanel = this;
+            RowPresenter.ParentPanel = this;
 
 			ColumnPresenter = (GanttPanelColumnsPresenter)GetTemplateChild("ColumnPresenter");
 			ColumnPresenter.ParentPanel = this;
@@ -217,10 +247,11 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 		#region Public functions
 		public void InvalidateItemPositions()
 		{
+            Debug.WriteLine("GanttPanel.InvalidateItemPositions()");
 			if (RowPresenter != null)
 				RowPresenter.Children.OfType<GanttRow>().ToList().ForEach(r =>
 				{
-					r.ItemsPresenter.InvalidateArrange();
+					//r.ItemsPresenter.InvalidateArrange();
 					r.ItemsPresenter.InvalidateMeasure();
 				}
 				);
@@ -244,10 +275,26 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 		#endregion
 
 		#region Private functions
-		private void GenerateRows(Size finalSize)
+
+	    private Size _oldSize;
+	    internal bool ignoreSameSize = true; 
+
+	    internal void ReGenerateRows()
+	    {
+	        RowsValid = false;
+            //GenerateRows(_oldSize);
+	        _oldSize = new Size();
+            this.InvalidateMeasure();
+            InvalidateItemPositions();
+	    }
+
+	    private void GenerateRows(Size finalSize)
 		{
-			if (!RowsValid)
+		    //MessageBox.Show(new System.Diagnostics.StackTrace().ToString());
+            if (!RowsValid && (_oldSize != finalSize || !ignoreSameSize))
 			{
+			    _oldSize = finalSize;
+
 				if (RowPresenter == null)
 					return;
 

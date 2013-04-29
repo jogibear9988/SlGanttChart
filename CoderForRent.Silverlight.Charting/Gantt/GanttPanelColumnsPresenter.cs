@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +21,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 
 		protected override Size ArrangeOverride(Size finalSize)
 		{
+            Debug.WriteLine("GanttPanelColumnsPresenter.ArrangeOverride()");
 			TimeUnits unit = (ParentPanel.ParentGanttChart.TimespanHeader.RowsPresenter.Children[ParentPanel.ParentGanttChart.TimespanHeader.RowsPresenter.Children.Count - 1] as TimespanHeaderRow).TimeUnit;
 
 			foreach (GanttPanelColumn column in this.Children)
@@ -35,6 +37,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 
 		protected override Size MeasureOverride(Size availableSize)
 		{
+            Debug.WriteLine("GanttPanelColumnsPresenter.MeasureOverride()");
 			TimeUnits unit = (ParentPanel.ParentGanttChart.TimespanHeader.RowsPresenter.Children[ParentPanel.ParentGanttChart.TimespanHeader.RowsPresenter.Children.Count - 1] as TimespanHeaderRow).TimeUnit;
 
 			foreach (GanttPanelColumn column in this.Children)
@@ -47,6 +50,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 
 		internal void Invalidate()
 		{
+            Debug.WriteLine("GanttPanelColumnsPresenter.Invalidate()");
 			TimeUnits unit = (ParentPanel.ParentGanttChart.TimespanHeader.RowsPresenter.Children[ParentPanel.ParentGanttChart.TimespanHeader.RowsPresenter.Children.Count - 1] as TimespanHeaderRow).TimeUnit;
 			double totalWidth = 0d;
 			DateTime date = this.ParentPanel.CurrentTime;

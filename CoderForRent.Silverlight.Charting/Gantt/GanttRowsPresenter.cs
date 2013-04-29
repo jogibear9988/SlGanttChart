@@ -6,6 +6,8 @@
  * 
  * 
  * */
+
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -25,6 +27,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 		#region Constructors and Overrides
 		protected override Size ArrangeOverride(Size finalSize)
         {
+            Debug.WriteLine("GanttRowsPresenter.ArrangeOverride(" + finalSize.ToString() + ")");
             double position = 0d;
 
             Children.OfType<GanttRow>().ToList<GanttRow>().ForEach(g =>
@@ -43,6 +46,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
         }
         protected override Size MeasureOverride(Size availableSize)
         {
+            Debug.WriteLine("GanttRowsPresenter.MeasureOverride()");
             Children.OfType<GanttRow>().ToList<GanttRow>().ForEach(g =>
             {
                 g.Measure(new Size(availableSize.Width, ParentPanel.RowHeight));

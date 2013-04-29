@@ -9,12 +9,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 using CoderForRent.Silverlight.Charting.Core;
 
 namespace CoderForRent.Silverlight.Charting.Gantt
@@ -265,13 +267,27 @@ namespace CoderForRent.Silverlight.Charting.Gantt
         #endregion
 
         #region Constructors and Overrides
+
+        private DispatcherTimer timer;
         public GanttChart()
         {
 
             _Columns = new ObservableCollection<DataGridColumn>();
             this.SizeChanged += new SizeChangedEventHandler(GanttChart_SizeChanged);
-
+        
+            timer=new DispatcherTimer();
+            timer.Tick += timer_Tick;
+            timer.Interval = new TimeSpan(0, 0, 0, 2);
+            timer.Start();
         }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            timer = null;
+            Panel.ignoreSameSize = false;
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -286,7 +302,8 @@ namespace CoderForRent.Silverlight.Charting.Gantt
             Panel.Nodes = Nodes;
             Panel.ParentGanttChart = this;
             Panel.Dependencies = this.Dependencies;
-
+            
+            Panel.CurrentTime = TimespanHeader.CurrentTime;
 
             TaskGrid = (GanttDataGrid)GetTemplateChild("TaskGrid");
             TaskGrid.LoadingRow += TaskGrid_LoadingRow;
@@ -438,7 +455,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
         {
             TaskGrid.SetTopRow(Panel.TopNodeIndex);
             SetupVerticalScrollbar();
-
+            Panel.ReGenerateRows();
         }
         private void GridSplitter_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -477,7 +494,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
             if(_BottomBarTimeUnits != BottomBarTimeUnits)
                 (TimespanHeader.RowsPresenter.Children[1] as TimespanHeader.TimespanHeaderRow).TimeUnit = _BottomBarTimeUnits;
 
-            Panel.CurrentTime = TimespanHeader.CurrentTime;
+            //Panel.CurrentTime = TimespanHeader.CurrentTime;
 
         }
         #endregion

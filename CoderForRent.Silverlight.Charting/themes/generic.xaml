@@ -393,7 +393,6 @@
         </Setter>
     </Style>
 
-
     <!-- CoderForRent.Silverlight.Charting.Gantt.SimpleExpander -->
     <Style TargetType="gantt:SimpleExpander">
         <Setter Property="IsExpanded" Value="False" />
@@ -438,7 +437,6 @@
         </Setter>
 
     </Style>
-
 
     <!-- CoderForRent.Silverlight.Charting.TimespanHeader.TimespanHeader -->
     <Style TargetType="tsh:TimespanHeader" >
