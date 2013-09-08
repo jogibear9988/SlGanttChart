@@ -8,10 +8,8 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-
-using CoderForRent.Silverlight.Charting.Gantt;
 using System.Collections.Generic;
-using CoderForRent.Silverlight.Charting.Core;
+using CoderForRent.Charting.Gantt;
 
 namespace CoderForRent.Silverlight.GanttExample
 {
@@ -20,7 +18,7 @@ namespace CoderForRent.Silverlight.GanttExample
 		public Page()
 		{
 			InitializeComponent();
-			gantt.GeneratingGanttPanelColumn += new CoderForRent.Silverlight.Charting.Gantt.GanttPanelColumnHandler(gantt_GeneratingGanttPanelColumn);
+			gantt.GeneratingGanttPanelColumn += new GanttPanelColumnHandler(gantt_GeneratingGanttPanelColumn);
             
             //Change the zoom for using Hours.
             //Zoom.Value = 100;
@@ -29,7 +27,7 @@ namespace CoderForRent.Silverlight.GanttExample
 			gantt.Loaded += gantt_Loaded;
 		}
 
-		void gantt_GeneratingGanttPanelColumn(object sender, CoderForRent.Silverlight.Charting.Gantt.GanttPanelColumnEventArgs e)
+		void gantt_GeneratingGanttPanelColumn(object sender, GanttPanelColumnEventArgs e)
 		{
             //bool important = false;
 

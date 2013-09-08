@@ -100,12 +100,6 @@
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CoderForRent.Silverlight.Charting\CoderForRent.Silverlight.Charting.csproj">
-      <Project>{8FCBFF56-239A-404F-9061-5F27F05FED91}</Project>
-      <Name>CoderForRent.Silverlight.Charting</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="App.xaml">
       <Generator>MSBuild:MarkupCompilePass1</Generator>
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoderForRent.Silverlight.Charting\CoderForRent.Silverlight.Charting.csproj">
+      <Project>{8fcbff56-239a-404f-9061-5f27f05fed91}</Project>
+      <Name>CoderForRent.Silverlight.Charting</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

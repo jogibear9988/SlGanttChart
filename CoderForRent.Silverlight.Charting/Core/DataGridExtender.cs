@@ -5,13 +5,13 @@
  * */
 
 
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
-namespace CoderForRent.Silverlight.Charting.Core
+namespace CoderForRent.Charting.Core
 {
     public static class DataGridExtender
     {

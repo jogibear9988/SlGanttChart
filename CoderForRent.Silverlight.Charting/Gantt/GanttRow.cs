@@ -6,16 +6,16 @@
 
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Collections.Generic;
+using CoderForRent.Charting.Core;
 
-namespace CoderForRent.Silverlight.Charting.Gantt
+namespace CoderForRent.Charting.Gantt
 {
 	[TemplatePart(Name = "ItemsPresenterElement", Type = typeof(GanttItemsPresenter))]
 	public class GanttRow : Control
@@ -142,7 +142,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 		private void GanttRow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 		{
 			if (!IsReadOnly)
-				_DragStart = e.GetPosition(Application.Current.RootVisual);
+				_DragStart = e.GetPosition(UIHelpers.RootUI);
 		}
 		private void GanttRow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
@@ -168,7 +168,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 			else
 				_ProcessingMove = true;
 
-			Point cursorPosition = e.GetPosition(Application.Current.RootVisual);
+            Point cursorPosition = e.GetPosition(UIHelpers.RootUI);
 
 			List<GanttItem> items = ItemsPresenter.Children.OfType<GanttItem>().ToList();
 
@@ -176,7 +176,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 			{
 				GanttItem item = items[i];
 
-				GeneralTransform gt = item.TransformToVisual(Application.Current.RootVisual);
+                GeneralTransform gt = item.TransformToVisual(UIHelpers.RootUI);
 				Point itemPosition = gt.Transform(new Point(0, 0));
 
 				double distance = 0d;
@@ -270,7 +270,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 
 					}
 
-					_DragStart = e.GetPosition(Application.Current.RootVisual);
+                    _DragStart = e.GetPosition(UIHelpers.RootUI);
 
 				}
 

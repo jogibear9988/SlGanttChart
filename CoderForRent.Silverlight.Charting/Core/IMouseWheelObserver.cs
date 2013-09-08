@@ -6,7 +6,7 @@
 
 using System.Windows.Input;
 
-namespace CoderForRent.Silverlight.Charting.Core
+namespace CoderForRent.Charting.Core
 {
     public interface IMouseWheelObserver 
     { 

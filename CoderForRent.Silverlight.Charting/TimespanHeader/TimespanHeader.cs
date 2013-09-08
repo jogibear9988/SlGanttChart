@@ -10,10 +10,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using CoderForRent.Silverlight.Charting.Core;
-using System.ComponentModel;
+using CoderForRent.Charting.Core;
 
-namespace CoderForRent.Silverlight.Charting.TimespanHeader
+namespace CoderForRent.Charting.TimespanHeader
 {
     [TemplatePart(Name = "RowsPresenter", Type = typeof(TimespanHeaderRowsPresenter))]
     public class TimespanHeader : ContentControl, IMouseWheelObserver
@@ -94,8 +93,10 @@ namespace CoderForRent.Silverlight.Charting.TimespanHeader
             this.MouseMove += this_MouseMove;
             this.MouseLeave += this_MouseLeave;
 
-            if(!DesignerProperties.GetIsInDesignMode(Application.Current.RootVisual))
+#if SILVERLIGHT
+            if (!UIHelpers.IsInDesignModeStatic)
                 MouseWheelListener.Instance.AddObserver(this);
+#endif
         }
 
         #region Drag and Drop

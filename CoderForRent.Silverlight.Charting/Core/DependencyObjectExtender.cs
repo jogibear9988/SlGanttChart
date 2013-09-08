@@ -5,11 +5,11 @@
  * */
 
 
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
-using System.Collections.Generic;
 
-namespace CoderForRent.Silverlight.Charting.Core
+namespace CoderForRent.Charting.Core
 {
     public static class DependencyObjectExtender
     {

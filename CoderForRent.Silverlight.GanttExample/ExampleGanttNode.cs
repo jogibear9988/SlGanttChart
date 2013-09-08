@@ -5,20 +5,20 @@
  * */
 using System;
 using System.ComponentModel;
-using CoderForRent.Silverlight.Charting.Gantt;
+using CoderForRent.Charting.Gantt;
 
 namespace CoderForRent.Silverlight.GanttExample
 {
     public class ExampleGanttNode : GanttNode
     {
-        [GanttColumnAttribute(ColumnName="MyTask Name",ColumnIndex=0)]
+        [GanttColumn(ColumnName="MyTask Name",ColumnIndex=0)]
         public override string TaskName
         {
             get { return base.TaskName; }
             set { base.TaskName = value; }
         }
 
-        [GanttColumnAttribute(ColumnName = "Duration", ColumnIndex = 1)]
+        [GanttColumn(ColumnName = "Duration", ColumnIndex = 1)]
         public override string Duration
         {
             get
@@ -27,7 +27,7 @@ namespace CoderForRent.Silverlight.GanttExample
             }
         }
 
-        [GanttColumnAttribute(ColumnName = "% Complete", ColumnIndex = 2)]
+        [GanttColumn(ColumnName = "% Complete", ColumnIndex = 2)]
         public string PercentCompleteFormatted
         {
             get
@@ -41,7 +41,7 @@ namespace CoderForRent.Silverlight.GanttExample
             }
         }
 
-		[GanttColumnAttribute(ColumnName = "Start Date2", ColumnIndex = 3, ColumnType = GanttColumnType.DateTime)]
+		[GanttColumn(ColumnName = "Start Date2", ColumnIndex = 3, ColumnType = GanttColumnType.DateTime)]
         public string StartDateFormatted
         {
             get
@@ -59,7 +59,7 @@ namespace CoderForRent.Silverlight.GanttExample
             }
         }
 
-		[GanttColumnAttribute(ColumnName = "End Date2", ColumnIndex = 4, ColumnType = GanttColumnType.DateTime)]
+		[GanttColumn(ColumnName = "End Date2", ColumnIndex = 4, ColumnType = GanttColumnType.DateTime)]
         public string EndDateFormatted
         {
             get

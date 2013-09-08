@@ -1,16 +1,8 @@
-﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
+﻿using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using System.Windows.Media.Imaging;
 
-namespace CoderForRent.Silverlight.Charting.Core
+namespace CoderForRent.Charting.Core
 {
 	public static class WriteableBitmapExtensions
 	{
@@ -19,7 +11,11 @@ namespace CoderForRent.Silverlight.Charting.Core
 		public static void SetPixel(this WriteableBitmap instance, int x, int y, int color)
 		{
 			int index = (instance.PixelWidth * (y - 1)) + x;
+#if SILVERLIGHT
 			instance.Pixels[index] = color;
+#else
+		    instance.WritePixels(new Int32Rect(x, y, 1, 1), new[] {color}, 0, 0);
+#endif
 		}
 		public static int ConvertColor(this WriteableBitmap instance, Color color)
 		{

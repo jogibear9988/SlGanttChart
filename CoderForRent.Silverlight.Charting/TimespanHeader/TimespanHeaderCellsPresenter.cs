@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace CoderForRent.Silverlight.Charting.TimespanHeader
+namespace CoderForRent.Charting.TimespanHeader
 {
     public class TimespanHeaderCellsPresenter : Panel
     {

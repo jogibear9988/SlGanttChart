@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace CoderForRent.Silverlight.Charting.Gantt
+namespace CoderForRent.Charting.Gantt
 {
 	/// <summary>
 	/// This is a control that turs a triangle 90 degrees when clicked.

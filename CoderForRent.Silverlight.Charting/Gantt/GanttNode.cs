@@ -7,11 +7,11 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using System.Collections.Specialized;
 
-namespace CoderForRent.Silverlight.Charting.Gantt
+namespace CoderForRent.Charting.Gantt
 {
     /// <summary>
     /// A base class node that meats the requirements for the IGanttNode.
@@ -36,7 +36,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 
 
         private string _TaskName;
-        [GanttColumnAttribute(ColumnName = "Task Name", ColumnIndex = 0)]
+        [GanttColumn(ColumnName = "Task Name", ColumnIndex = 0)]
         public virtual string TaskName
         {
             get { return _TaskName; }
@@ -52,7 +52,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
             }
         }
 
-        [GanttColumnAttribute(ColumnName = "Duration", ColumnIndex = 1)]
+        [GanttColumn(ColumnName = "Duration", ColumnIndex = 1)]
         public virtual string Duration
         {
             get
@@ -64,7 +64,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
         }
 
         private double _PercentComplete;
-        [GanttColumnAttribute(ColumnName = "% Complete", ColumnIndex = 2)]
+        [GanttColumn(ColumnName = "% Complete", ColumnIndex = 2)]
         public virtual double PercentComplete
         {
             get { AddFirstSectionIfNecessary(); return Sections.Average(s => s.PercentComplete); }
@@ -80,7 +80,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
             }
         }
 
-        [GanttColumnAttribute(ColumnName = "Start Date", ColumnIndex = 3, ColumnType = GanttColumnType.DateTime)]
+        [GanttColumn(ColumnName = "Start Date", ColumnIndex = 3, ColumnType = GanttColumnType.DateTime)]
         public virtual DateTime StartDate
         {
             get { AddFirstSectionIfNecessary(); return Sections.First().StartDate; }
@@ -100,7 +100,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
         }
 
 
-        [GanttColumnAttribute(ColumnName = "End Date", ColumnIndex = 4, ColumnType = GanttColumnType.DateTime)]
+        [GanttColumn(ColumnName = "End Date", ColumnIndex = 4, ColumnType = GanttColumnType.DateTime)]
         public virtual DateTime EndDate
         {
             get { AddFirstSectionIfNecessary(); return Sections.Last().EndDate; }
@@ -180,7 +180,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
         }
 
         private string _Resources;
-        [GanttColumnAttribute(ColumnName = "Resources", ColumnIndex = 5)]
+        [GanttColumn(ColumnName = "Resources", ColumnIndex = 5)]
         public virtual string Resources
         {
 

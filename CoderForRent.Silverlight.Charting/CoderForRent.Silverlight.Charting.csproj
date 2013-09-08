@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CoderForRent.Silverlight.Charting</RootNamespace>
-    <AssemblyName>CoderForRent.Silverlight.Charting</AssemblyName>
+    <RootNamespace>CoderForRent.Charting</RootNamespace>
+    <AssemblyName>CoderForRent.Charting</AssemblyName>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <SilverlightApplication>false</SilverlightApplication>
     <ValidateXaml>true</ValidateXaml>
@@ -77,6 +77,7 @@
     <Compile Include="Core\TimeUnit.cs" />
     <Compile Include="Core\TimeUnitScalar.cs" />
     <Compile Include="Core\TraverseExtension.cs" />
+    <Compile Include="Core\UIHelpers.cs" />
     <Compile Include="Core\WriteableBitmapExtensions.cs" />
     <Compile Include="Core\Zoom.cs" />
     <Compile Include="Gantt\ExpanderColumn.cs" />
@@ -110,12 +111,17 @@
     <Compile Include="TimespanHeader\TimespanHeaderCellsPresenter.cs" />
     <Compile Include="TimespanHeader\TimespanHeaderRow.cs" />
     <Compile Include="TimespanHeader\TimespanHeaderRowsPresenter.cs" />
+    <Compile Include="Wrappers\GridSplitter.cs" />
+    <Compile Include="Wrappers\HyperlinkButton.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="themes\generic.xaml">
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    <Page Include="themes\gantt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />

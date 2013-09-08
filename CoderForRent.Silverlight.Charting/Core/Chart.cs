@@ -6,7 +6,7 @@
 
 using System.Windows.Controls;
 
-namespace CoderForRent.Silverlight.Charting.Core
+namespace CoderForRent.Charting.Core
 {
     public class Chart : ContentControl
     {

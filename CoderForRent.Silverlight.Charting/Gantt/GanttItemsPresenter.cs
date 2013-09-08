@@ -8,9 +8,8 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
-namespace CoderForRent.Silverlight.Charting.Gantt
+namespace CoderForRent.Charting.Gantt
 {
 	/// <summary>
 	/// This class will arrange and measure it's child items for it's parent row.

@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5852DDE9-EAB5-4103-AE87-BCB843A603F3}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CoderForRent.Charting</RootNamespace>
+    <AssemblyName>CoderForRent.Charting</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Core\Chart.cs">
+      <Link>Core\Chart.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Core\DataGridExtender.cs">
+      <Link>Core\DataGridExtender.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Core\DateTimeManager.cs">
+      <Link>Core\DateTimeManager.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Core\DependencyObjectExtender.cs">
+      <Link>Core\DependencyObjectExtender.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Core\IMouseWheelObserver.cs">
+      <Link>Core\IMouseWheelObserver.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Core\MouseWheelArgs.cs">
+      <Link>Core\MouseWheelArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Core\TimeUnit.cs">
+      <Link>Core\TimeUnit.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Core\TimeUnitScalar.cs">
+      <Link>Core\TimeUnitScalar.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Core\TraverseExtension.cs">
+      <Link>Core\TraverseExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Core\UIHelpers.cs">
+      <Link>Core\UIHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Core\WriteableBitmapExtensions.cs">
+      <Link>Core\WriteableBitmapExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Core\Zoom.cs">
+      <Link>Core\Zoom.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\ExpanderColumn.cs">
+      <Link>Gantt\ExpanderColumn.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttChart.cs">
+      <Link>Gantt\GanttChart.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttColumnAttribute.cs">
+      <Link>Gantt\GanttColumnAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttContentPresenter.cs">
+      <Link>Gantt\GanttContentPresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttDataGrid.cs">
+      <Link>Gantt\GanttDataGrid.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttDateColumn.cs">
+      <Link>Gantt\GanttDateColumn.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttDependenciesPresenter.cs">
+      <Link>Gantt\GanttDependenciesPresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttDependency.cs">
+      <Link>Gantt\GanttDependency.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttDependencyItem.cs">
+      <Link>Gantt\GanttDependencyItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttExpanderColumn.cs">
+      <Link>Gantt\GanttExpanderColumn.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttItem.cs">
+      <Link>Gantt\GanttItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttItemEventArgs.cs">
+      <Link>Gantt\GanttItemEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttItemsPresenter.cs">
+      <Link>Gantt\GanttItemsPresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttNode.cs">
+      <Link>Gantt\GanttNode.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttNodeSection.cs">
+      <Link>Gantt\GanttNodeSection.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttNodeSectionEventArgs.cs">
+      <Link>Gantt\GanttNodeSectionEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttPanel.cs">
+      <Link>Gantt\GanttPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttPanelColumn.cs">
+      <Link>Gantt\GanttPanelColumn.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttPanelColumnsPresenter.cs">
+      <Link>Gantt\GanttPanelColumnsPresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttRow.cs">
+      <Link>Gantt\GanttRow.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\GanttRowsPresenter.cs">
+      <Link>Gantt\GanttRowsPresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\HeaderGanttItem.cs">
+      <Link>Gantt\HeaderGanttItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\IGanttNode.cs">
+      <Link>Gantt\IGanttNode.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\LevelToWidthConverter.cs">
+      <Link>Gantt\LevelToWidthConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Gantt\SimpleExpander.cs">
+      <Link>Gantt\SimpleExpander.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\TimespanHeader\TimespanHeader.cs">
+      <Link>TimespanHeader\TimespanHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\TimespanHeader\TimespanHeaderCell.cs">
+      <Link>TimespanHeader\TimespanHeaderCell.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\TimespanHeader\TimespanHeaderCellsPresenter.cs">
+      <Link>TimespanHeader\TimespanHeaderCellsPresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\TimespanHeader\TimespanHeaderRow.cs">
+      <Link>TimespanHeader\TimespanHeaderRow.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\TimespanHeader\TimespanHeaderRowsPresenter.cs">
+      <Link>TimespanHeader\TimespanHeaderRowsPresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Wrappers\GridSplitter.cs">
+      <Link>Wrappers\GridSplitter.cs</Link>
+    </Compile>
+    <Compile Include="..\CoderForRent.Silverlight.Charting\Wrappers\HyperlinkButton.cs">
+      <Link>Wrappers\HyperlinkButton.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\CoderForRent.Silverlight.Charting\themes\gantt.xaml">
+      <Link>Themes\gantt.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\hyperlinkbutton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

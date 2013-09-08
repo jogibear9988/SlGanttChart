@@ -9,9 +9,8 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using CoderForRent.Silverlight.Charting.Core;
 
-namespace CoderForRent.Silverlight.Charting.TimespanHeader
+namespace CoderForRent.Charting.TimespanHeader
 {
     public class TimespanHeaderRowsPresenter : Panel
     {
@@ -19,7 +18,7 @@ namespace CoderForRent.Silverlight.Charting.TimespanHeader
         protected override Size ArrangeOverride(Size finalSize)
         {
             int visibleCount = 0;
-            visibleCount = base.Children.Where<UIElement>(ui => ui.Visibility == Visibility.Visible).Count();
+            visibleCount = base.Children.Cast<UIElement>().Count(ui => ui.Visibility == Visibility.Visible);
 
             double y = 0.0;
             double height = finalSize.Height / ((double)visibleCount);
@@ -47,7 +46,7 @@ namespace CoderForRent.Silverlight.Charting.TimespanHeader
             int visibleCount = 0;
             bool isPositiveInfinity = false;
 
-            visibleCount = base.Children.Where<UIElement>(ui => ui.Visibility == Visibility.Visible).Count();
+            visibleCount = base.Children.Cast<UIElement>().Where<UIElement>(ui => ui.Visibility == Visibility.Visible).Count();
 
             if (double.IsPositiveInfinity(availableSize.Height))
             {

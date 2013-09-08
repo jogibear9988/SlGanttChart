@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using CoderForRent.Charting.Gantt;
 
 namespace CoderForRent.Silverlight.GanttExample
 {
@@ -25,7 +26,7 @@ namespace CoderForRent.Silverlight.GanttExample
 		{
 
 
-			ObservableCollection<CoderForRent.Silverlight.Charting.Gantt.IGanttNode> nodes = new System.Collections.ObjectModel.ObservableCollection<CoderForRent.Silverlight.Charting.Gantt.IGanttNode>
+			ObservableCollection<IGanttNode> nodes = new System.Collections.ObjectModel.ObservableCollection<IGanttNode>
             {
                 new ExampleGanttNode{ TaskName="Test MyTask", StartDate=DateTime.Now, EndDate=DateTime.Now.AddDays(5), Resources="dave", PercentComplete=25d },
                 new ExampleGanttNode{ TaskName="Another Test MyTask", StartDate=DateTime.Now.AddDays(5), EndDate=DateTime.Now.AddDays(6), Resources="parker", PercentComplete=50d },
@@ -40,7 +41,7 @@ namespace CoderForRent.Silverlight.GanttExample
                 new ExampleGanttNode{ TaskName="Something To Write Home About", StartDate=DateTime.Now.AddDays(80), EndDate=DateTime.Now.AddDays(90), Resources="missy", PercentComplete=90d }
             };
 
-			nodes[0].ChildNodes = new System.Collections.ObjectModel.ObservableCollection<CoderForRent.Silverlight.Charting.Gantt.IGanttNode>
+			nodes[0].ChildNodes = new System.Collections.ObjectModel.ObservableCollection<IGanttNode>
             {
                 new ExampleGanttNode{ TaskName="Sub MyTask 1", StartDate= nodes[0].StartDate, EndDate=nodes[0].StartDate.AddDays(2), Resources="dave", PercentComplete=25d },
                 new ExampleGanttNode{ TaskName="Sub MyTask 2", StartDate= nodes[0].StartDate.AddDays(2), EndDate=nodes[0].StartDate.AddDays(3), Resources="parker", PercentComplete=50d },
@@ -49,7 +50,7 @@ namespace CoderForRent.Silverlight.GanttExample
             };
 
 
-			nodes[1].ChildNodes = new System.Collections.ObjectModel.ObservableCollection<CoderForRent.Silverlight.Charting.Gantt.IGanttNode>
+			nodes[1].ChildNodes = new System.Collections.ObjectModel.ObservableCollection<IGanttNode>
             {
                 new ExampleGanttNode{ TaskName="Sub MyTask 1", StartDate= nodes[1].StartDate, EndDate=nodes[1].StartDate.AddDays(2), Resources="dave", PercentComplete=25d },
                 new ExampleGanttNode{ TaskName="Sub MyTask 2", StartDate= nodes[1].StartDate.AddDays(2), EndDate=nodes[1].StartDate.AddDays(3), Resources="parker", PercentComplete=50d },
@@ -58,7 +59,7 @@ namespace CoderForRent.Silverlight.GanttExample
             };
 
 
-			nodes[2].ChildNodes = new System.Collections.ObjectModel.ObservableCollection<CoderForRent.Silverlight.Charting.Gantt.IGanttNode>
+			nodes[2].ChildNodes = new System.Collections.ObjectModel.ObservableCollection<IGanttNode>
             {
                 new ExampleGanttNode{ TaskName="Sub MyTask 1", StartDate= nodes[2].StartDate, EndDate=nodes[2].StartDate.AddDays(2), Resources="dave", PercentComplete=25d },
                 new ExampleGanttNode{ TaskName="Sub MyTask 2", StartDate= nodes[2].StartDate.AddDays(2), EndDate=nodes[2].StartDate.AddDays(3), Resources="parker", PercentComplete=50d },
@@ -67,7 +68,7 @@ namespace CoderForRent.Silverlight.GanttExample
             };
 
 
-			nodes[3].ChildNodes = new System.Collections.ObjectModel.ObservableCollection<CoderForRent.Silverlight.Charting.Gantt.IGanttNode>
+			nodes[3].ChildNodes = new System.Collections.ObjectModel.ObservableCollection<IGanttNode>
             {
                 new ExampleGanttNode{ TaskName="Sub MyTask 1", StartDate= nodes[3].StartDate, EndDate=nodes[3].StartDate.AddDays(2), Resources="dave", PercentComplete=25d },
                 new ExampleGanttNode{ TaskName="Sub MyTask 2", StartDate= nodes[3].StartDate.AddDays(2), EndDate=nodes[3].StartDate.AddDays(3), Resources="parker", PercentComplete=50d },
@@ -76,7 +77,7 @@ namespace CoderForRent.Silverlight.GanttExample
             };
 
 
-			nodes[4].ChildNodes = new System.Collections.ObjectModel.ObservableCollection<CoderForRent.Silverlight.Charting.Gantt.IGanttNode>
+			nodes[4].ChildNodes = new System.Collections.ObjectModel.ObservableCollection<IGanttNode>
             {
                 new ExampleGanttNode{ TaskName="Sub MyTask 1", StartDate= nodes[4].StartDate, EndDate=nodes[4].StartDate.AddDays(2), Resources="dave", PercentComplete=25d },
                 new ExampleGanttNode{ TaskName="Sub MyTask 2", StartDate= nodes[4].StartDate.AddDays(2), EndDate=nodes[4].StartDate.AddDays(3), Resources="parker", PercentComplete=50d },
@@ -85,7 +86,7 @@ namespace CoderForRent.Silverlight.GanttExample
             };
 
 
-			nodes[5].ChildNodes = new System.Collections.ObjectModel.ObservableCollection<CoderForRent.Silverlight.Charting.Gantt.IGanttNode>
+			nodes[5].ChildNodes = new System.Collections.ObjectModel.ObservableCollection<IGanttNode>
             {
                 new ExampleGanttNode{ TaskName="Sub MyTask 1", StartDate= nodes[5].StartDate, EndDate=nodes[5].StartDate.AddDays(2), Resources="dave", PercentComplete=25d },
                 new ExampleGanttNode{ TaskName="Sub MyTask 2", StartDate= nodes[5].StartDate.AddDays(2), EndDate=nodes[5].StartDate.AddDays(3), Resources="parker", PercentComplete=50d },

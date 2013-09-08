@@ -8,9 +8,9 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using CoderForRent.Silverlight.Charting.Core;
+using CoderForRent.Charting.Core;
 
-namespace CoderForRent.Silverlight.Charting.TimespanHeader
+namespace CoderForRent.Charting.TimespanHeader
 {
     public class TimespanHeaderCell : Control
     {

@@ -10,7 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace CoderForRent.Silverlight.Charting.Gantt
+namespace CoderForRent.Charting.Gantt
 {
 	/// <summary>
 	/// A drag state determines how the mouse move events should act on a GanttItem

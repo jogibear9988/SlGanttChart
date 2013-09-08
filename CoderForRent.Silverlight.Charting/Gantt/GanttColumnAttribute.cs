@@ -7,7 +7,7 @@
 
 using System;
 
-namespace CoderForRent.Silverlight.Charting.Gantt
+namespace CoderForRent.Charting.Gantt
 {
 	public enum GanttColumnType
 	{

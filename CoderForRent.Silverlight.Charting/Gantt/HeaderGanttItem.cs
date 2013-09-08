@@ -7,7 +7,7 @@
  * 
  * */
 
-namespace CoderForRent.Silverlight.Charting.Gantt
+namespace CoderForRent.Charting.Gantt
 {
 	/// <summary>
 	/// This class is the control that is displayed for nodes that have children.

@@ -9,7 +9,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace CoderForRent.Silverlight.Charting.Gantt
+namespace CoderForRent.Charting.Gantt
 {
 	/// <summary>
 	/// The node interface for use in the GanttChart control.

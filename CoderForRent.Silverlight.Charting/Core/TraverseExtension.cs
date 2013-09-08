@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CoderForRent.Silverlight.Charting.Core
+namespace CoderForRent.Charting.Core
 {
     public static class TraverseExtension
     {

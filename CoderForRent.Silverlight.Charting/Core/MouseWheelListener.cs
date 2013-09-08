@@ -6,12 +6,12 @@
 
 
 using System;
-using System.Windows;
-using System.Windows.Input;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Browser;
+using System.Windows.Input;
 
-namespace CoderForRent.Silverlight.Charting.Core
+namespace CoderForRent.Charting.Core
 {
     public class MouseWheelListener
     {

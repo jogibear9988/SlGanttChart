@@ -9,10 +9,9 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using CoderForRent.Silverlight.Charting.Core;
-using System.Globalization;
+using CoderForRent.Charting.Core;
 
-namespace CoderForRent.Silverlight.Charting.TimespanHeader
+namespace CoderForRent.Charting.TimespanHeader
 {
     [TemplatePart(Name = "CellsPresenter", Type = typeof(TimespanHeaderCellsPresenter))]
     public class TimespanHeaderRow : Control

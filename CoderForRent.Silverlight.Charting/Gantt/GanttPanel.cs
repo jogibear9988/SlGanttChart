@@ -10,16 +10,12 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection.Emit;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
-using CoderForRent.Silverlight.Charting.Core;
 using System.Windows.Media;
-using System.ComponentModel;
+using CoderForRent.Charting.Core;
 
-namespace CoderForRent.Silverlight.Charting.Gantt
+namespace CoderForRent.Charting.Gantt
 {
 
 
@@ -214,7 +210,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 	            finalSize.Height - BorderThickness.Top - BorderThickness.Bottom);
 	        MainElement.Clip = r;
 
-	        if (DesignerProperties.IsInDesignTool)
+            if (UIHelpers.IsInDesignModeStatic)
 	        {
 	            return base.ArrangeOverride(finalSize);
 	        }
@@ -365,7 +361,7 @@ namespace CoderForRent.Silverlight.Charting.Gantt
 		{
 			var deps = Dependencies.Where(d => d.ChildNode == ganttItem.Node || d.ParentNode == ganttItem.Node);
 
-			var items = DependencyPresenter.Children.Where(ui => (ui as GanttDependencyItem).Dependency.ChildNode == ganttItem.Node || (ui as GanttDependencyItem).Dependency.ParentNode == ganttItem.Node);
+			var items = DependencyPresenter.Children.Cast<UIElement>().Where(ui => (ui as GanttDependencyItem).Dependency.ChildNode == ganttItem.Node || (ui as GanttDependencyItem).Dependency.ParentNode == ganttItem.Node);
 
 			foreach (UIElement ui in items)
 			{

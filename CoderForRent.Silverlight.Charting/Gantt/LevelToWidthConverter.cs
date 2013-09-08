@@ -7,7 +7,7 @@
 using System;
 using System.Windows.Data;
 
-namespace CoderForRent.Silverlight.Charting.Gantt
+namespace CoderForRent.Charting.Gantt
 {
 	/// <summary>
 	/// This class converts a node's Level property into an indention width for the gantt chart.

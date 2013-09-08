@@ -6,10 +6,8 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,9 +15,9 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using CoderForRent.Silverlight.Charting.Core;
+using CoderForRent.Charting.Core;
 
-namespace CoderForRent.Silverlight.Charting.Gantt
+namespace CoderForRent.Charting.Gantt
 {
     /// <summary>
     /// The Gantt Chart will display a datagrid with a graphically represented schedule cross-referenced by
@@ -269,27 +267,23 @@ namespace CoderForRent.Silverlight.Charting.Gantt
         #region Constructors and Overrides
 
         private DispatcherTimer timer;
+
+#if !SILVERLIGHT
+        static GanttChart()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(GanttChart), new FrameworkPropertyMetadata(typeof(GanttChart)));
+        }
+#endif
+
         public GanttChart()
         {
-
+#if SILVERLIGHT
+            this.DefaultStyleKey = typeof(GanttChart);           
+#endif
             _Columns = new ObservableCollection<DataGridColumn>();
             this.SizeChanged += new SizeChangedEventHandler(GanttChart_SizeChanged);
-        
-//This is a Hack
-            timer=new DispatcherTimer();
-            timer.Tick += timer_Tick;
-            timer.Interval = new TimeSpan(0, 0, 0, 2);
-            timer.Start();
         }
-
-        void timer_Tick(object sender, EventArgs e)
-        {
-            timer.Stop();
-            timer = null;
-            Panel.ignoreSameSize = false;
-        }
-//end of Hack!!
-
+       
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
