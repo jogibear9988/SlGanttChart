@@ -55,9 +55,18 @@ namespace CoderForRent.Charting.TimespanHeader
                 Text = this.DateTime.ToString(this.Format, System.Globalization.CultureInfo.CurrentCulture);
         }
 
+#if !SILVERLIGHT
+        static TimespanHeaderCell()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(TimespanHeaderCell), new FrameworkPropertyMetadata(typeof(TimespanHeaderCell)));
+        }
+#endif
+
         public TimespanHeaderCell()
         {
-            this.DefaultStyleKey = this.GetType();
+#if SILVERLIGHT
+            this.DefaultStyleKey = typeof(TimespanHeaderCell);
+#endif
             this.UseLayoutRounding = false;
         }
 

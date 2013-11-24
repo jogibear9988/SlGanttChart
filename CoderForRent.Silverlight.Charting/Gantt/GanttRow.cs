@@ -74,9 +74,19 @@ namespace CoderForRent.Charting.Gantt
 			this.Node = node;
 
 		}
-		public GanttRow()
+
+#if !SILVERLIGHT
+        static GanttRow()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(GanttRow), new FrameworkPropertyMetadata(typeof(GanttRow)));
+        }
+#endif
+
+        public GanttRow()
 		{
-			this.DefaultStyleKey = this.GetType();
+#if SILVERLIGHT
+            this.DefaultStyleKey = typeof(GanttRow);
+#endif
 			UseLayoutRounding = false;
 			ItemsValid = false;
 

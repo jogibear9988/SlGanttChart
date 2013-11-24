@@ -7,6 +7,8 @@
  * 
  * */
 
+using System.Windows;
+
 namespace CoderForRent.Charting.Gantt
 {
 	/// <summary>
@@ -15,10 +17,20 @@ namespace CoderForRent.Charting.Gantt
 	public class HeaderGanttItem : GanttItem
 	{
 		#region Constructors and overrides
-		public HeaderGanttItem()
+
+#if !SILVERLIGHT
+        static HeaderGanttItem()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(HeaderGanttItem), new FrameworkPropertyMetadata(typeof(HeaderGanttItem)));
+        }
+#endif
+        public HeaderGanttItem()
 		{
+#if SILVERLIGHT
 			this.DefaultStyleKey = typeof(HeaderGanttItem);
+#endif
 		}
+
 		#endregion
 	}
 }

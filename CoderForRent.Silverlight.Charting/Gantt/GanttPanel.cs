@@ -189,9 +189,19 @@ namespace CoderForRent.Charting.Gantt
 		#endregion
 
 		#region Constructors and overrides
-		public GanttPanel()
+
+#if !SILVERLIGHT
+        static GanttPanel()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(GanttPanel), new FrameworkPropertyMetadata(typeof(GanttPanel)));
+        }
+#endif
+
+        public GanttPanel()
 		{
-			this.DefaultStyleKey = this.GetType();
+#if SILVERLIGHT
+            this.DefaultStyleKey = typeof(GanttPanel);
+#endif
 			UseLayoutRounding = false;        
 		}
 

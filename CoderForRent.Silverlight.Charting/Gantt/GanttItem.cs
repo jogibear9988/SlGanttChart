@@ -140,9 +140,19 @@ namespace CoderForRent.Charting.Gantt
 		#endregion
 
 		#region Constructors and overrides
-		public GanttItem()
+
+#if !SILVERLIGHT
+        static GanttItem()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(GanttItem), new FrameworkPropertyMetadata(typeof(GanttItem)));
+        }
+#endif
+
+        public GanttItem()
 		{
-			this.DefaultStyleKey = this.GetType();
+#if SILVERLIGHT
+            this.DefaultStyleKey = typeof(GanttItem);
+#endif
 
 			UseLayoutRounding = false;
 			this.MouseEnter += new MouseEventHandler(GanttItem_MouseEnter);

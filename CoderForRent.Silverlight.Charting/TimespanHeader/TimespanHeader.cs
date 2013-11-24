@@ -82,10 +82,18 @@ namespace CoderForRent.Charting.TimespanHeader
 
 		internal TimespanHeaderRowsPresenter RowsPresenter { get; set; }
 
+#if !SILVERLIGHT
+        static TimespanHeader()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(TimespanHeader), new FrameworkPropertyMetadata(typeof(TimespanHeader)));
+        }
+#endif
 
         public TimespanHeader()
         {
+#if SILVERLIGHT
             this.DefaultStyleKey = typeof(TimespanHeader);
+#endif
 
             this.SizeChanged += this_SizeChanged;
             this.MouseLeftButtonDown += this_MouseLeftButtonDown;

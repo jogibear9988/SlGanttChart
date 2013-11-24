@@ -44,9 +44,17 @@ namespace CoderForRent.Charting.Gantt
 
 		protected internal Canvas LineCanvas { get; private set; }
 
-		public GanttDependencyItem()
+#if !SILVERLIGHT
+        static GanttDependencyItem()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(GanttDependencyItem), new FrameworkPropertyMetadata(typeof(GanttDependencyItem)));
+        }
+#endif
+        public GanttDependencyItem()
 		{
+#if SILVERLIGHT
 			this.DefaultStyleKey = typeof(GanttDependencyItem);
+#endif
 			this.Loaded += new RoutedEventHandler(GanttDependencyItem_Loaded);
 
 		}

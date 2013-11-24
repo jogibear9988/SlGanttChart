@@ -65,9 +65,18 @@ namespace CoderForRent.Charting.TimespanHeader
 
         }
 
+#if !SILVERLIGHT
+        static TimespanHeaderRow()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(TimespanHeaderRow), new FrameworkPropertyMetadata(typeof(TimespanHeaderRow)));
+        }
+#endif
+
         public TimespanHeaderRow()
         {
-            this.DefaultStyleKey = this.GetType();
+#if SILVERLIGHT
+            this.DefaultStyleKey = typeof(TimespanHeaderRow);
+#endif
             this.UseLayoutRounding = false;
         }
 

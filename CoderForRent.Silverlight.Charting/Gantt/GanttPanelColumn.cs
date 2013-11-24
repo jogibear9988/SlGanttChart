@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CoderForRent.Charting.Gantt
@@ -13,9 +14,18 @@ namespace CoderForRent.Charting.Gantt
 	{
 		public DateTime RepresentedDate { get; set; }
 
-		public GanttPanelColumn()
+#if !SILVERLIGHT
+        static GanttPanelColumn()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(GanttPanelColumn), new FrameworkPropertyMetadata(typeof(GanttPanelColumn)));
+        }
+#endif
+
+        public GanttPanelColumn()
 		{
-			this.DefaultStyleKey = this.GetType();
+#if SILVERLIGHT
+			this.DefaultStyleKey = typeof(GanttPanelColumn);
+#endif
             this.UseLayoutRounding = false;
 		}
 		public override void OnApplyTemplate()

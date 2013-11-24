@@ -60,9 +60,19 @@ namespace CoderForRent.Charting.Gantt
 		#endregion
 
 		#region Constructors and overrides
-		public SimpleExpander()
+
+#if !SILVERLIGHT
+        static SimpleExpander()
         {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(SimpleExpander), new FrameworkPropertyMetadata(typeof(SimpleExpander)));
+        }
+#endif
+
+        public SimpleExpander()
+        {
+#if SILVERLIGHT
             this.DefaultStyleKey = typeof(SimpleExpander);
+#endif
 			this.MouseLeftButtonDown += new MouseButtonEventHandler(SimpleExpander_MouseLeftButtonDown);
             this.Loaded += new RoutedEventHandler(SimpleExpander_Loaded);
 		}
