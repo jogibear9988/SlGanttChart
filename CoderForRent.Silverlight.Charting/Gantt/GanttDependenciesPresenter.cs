@@ -15,27 +15,26 @@ namespace CoderForRent.Charting.Gantt
 		public GanttDependenciesPresenter()
 		{
 			this.UseLayoutRounding = false;
-			this.Loaded += new RoutedEventHandler(GanttDependenciesPresenter_Loaded);
+			this.Loaded += GanttDependenciesPresenter_Loaded;
 		}
+
 		protected override Size ArrangeOverride(Size finalSize)
 		{
             Debug.WriteLine("GanttDependenciesPresenter.ArrangeOverride()");
 			foreach (GanttDependencyItem item in Children)
-			{
-			
-			        item.Arrange(new Rect(0, 0, finalSize.Width, finalSize.Height));
+			{			
+			    item.Arrange(new Rect(0, 0, finalSize.Width, finalSize.Height));
 			}
 
 			return base.ArrangeOverride(finalSize);
 		}
+
 		protected override Size MeasureOverride(Size availableSize)
 		{
             Debug.WriteLine("GanttDependenciesPresenter.MeasureOverride()");
 			foreach (GanttDependencyItem item in Children)
-			{
-			
+			{			
 				item.Measure(availableSize);
-
 			}
 
 			return base.MeasureOverride(availableSize);

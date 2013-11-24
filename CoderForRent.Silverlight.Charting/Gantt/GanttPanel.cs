@@ -246,11 +246,12 @@ namespace CoderForRent.Charting.Gantt
 			DependencyPresenter.ParentPanel = this;
 
 			MainElement = (FrameworkElement)GetTemplateChild("MainElement");
-
 		}
+
 		#endregion
 
 		#region Public functions
+
 		public void InvalidateItemPositions()
 		{
             Debug.WriteLine("GanttPanel.InvalidateItemPositions()");
@@ -268,6 +269,7 @@ namespace CoderForRent.Charting.Gantt
 			if (DependencyPresenter != null)
 				DependencyPresenter.Invalidate();
 		}
+
 		public void ValidateRowCount()
 		{
 			if (RowCount != (int)Math.Round(this.ActualWidth / this.RowHeight))
@@ -275,9 +277,9 @@ namespace CoderForRent.Charting.Gantt
 				RowsValid = false;
 				InvalidateArrange();
 				//	GenerateRows(new Size(this.ActualWidth,this.ActualHeight));
-
 			}
 		}
+
 		#endregion
 
 		#region Private functions

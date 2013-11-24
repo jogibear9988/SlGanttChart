@@ -213,8 +213,8 @@ namespace CoderForRent.Charting.Gantt
 				TimeSpan ts = GetTimeSpanFromDistance(distance);
 
 #if DEBUG
-                    ParentPanel.Content = item.Name;
-					ParentPanel.Content = distance.ToString() + "   " + ts.ToString() + " " + item.DragState.ToString();
+                ParentPanel.Content = item.Name;
+				ParentPanel.Content = distance.ToString() + "   " + ts.ToString() + " " + item.DragState.ToString();
 #endif
 
 				if (Math.Abs(ts.TotalDays) >= 1)
@@ -245,10 +245,9 @@ namespace CoderForRent.Charting.Gantt
 						{
                             item.Section.EndDate = newDate;
 							item.InvalidateMeasure();
-							
+                            
 							if (RowIndex > 0)
 								(ParentPanel.RowPresenter.Children[RowIndex - 1] as GanttRow).Invalidate();
-
 						}
 
 						ParentPanel.RaiseItemChanged(new GanttItemEventArgs(item));
@@ -277,13 +276,10 @@ namespace CoderForRent.Charting.Gantt
 							(ParentPanel.RowPresenter.Children[RowIndex - 1] as GanttRow).Invalidate();
 
 						ParentPanel.RaiseItemChanged(new GanttItemEventArgs(item));
-
 					}
 
                     _DragStart = e.GetPosition(UIHelpers.RootUI);
-
 				}
-
 			}
 
 			_ProcessingMove = false;
@@ -312,7 +308,6 @@ namespace CoderForRent.Charting.Gantt
                         item = new GanttItem();
                     else
                         item = new HeaderGanttItem();
-
                     
                     item.GapBackgroundBrush = this.GapBackgroundBrush;
                     item.GapBorderBrush = this.GapBorderBrush;
@@ -322,7 +317,6 @@ namespace CoderForRent.Charting.Gantt
                     item.ParentRow = this;
                     item.Node = Node;
                     ItemsPresenter.Children.Add(item);
-
                 }
                 else
                 {
@@ -354,11 +348,11 @@ namespace CoderForRent.Charting.Gantt
 
 		    ParentPanel.RowsValid = false;
 
-			//this.InvalidateArrange();
+            //this.InvalidateArrange();
 			this.InvalidateMeasure();
 
 			//ItemsPresenter.InvalidateArrange();
-			ItemsPresenter.InvalidateMeasure();
+			ItemsPresenter.InvalidateMeasure();            
 		}
 		internal TimeSpan GetTimeSpanFromDistance(double distance)
 		{

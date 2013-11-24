@@ -40,8 +40,6 @@ namespace CoderForRent.Charting.Gantt
 
 		public GanttDependenciesPresenter ParentPresenter { get; set; }
 
-
-
 		protected internal Canvas LineCanvas { get; private set; }
 
 #if !SILVERLIGHT
@@ -56,7 +54,6 @@ namespace CoderForRent.Charting.Gantt
 			this.DefaultStyleKey = typeof(GanttDependencyItem);
 #endif
 			this.Loaded += new RoutedEventHandler(GanttDependencyItem_Loaded);
-
 		}
 		
 		public override void OnApplyTemplate()
@@ -69,31 +66,27 @@ namespace CoderForRent.Charting.Gantt
 		}
 	
 		private void Dependency_TypeChanged(object sender, EventArgs e)
-		{
-			
-		}
+		{ }
+
 		private void GanttDependencyItem_Loaded(object sender, RoutedEventArgs e)
-		{
-			
-		}
-		internal void UpdateDependencyLines()
-		{
-			if ( Dependency == null || LineCanvas == null )
-				return;
+		{ }
 
-			switch (Dependency.Type)
-			{
-				default:
-				case DependencyType.ChildBeginsAtParentEnd:
+	    internal void UpdateDependencyLines()
+	    {
+	        if (Dependency == null || LineCanvas == null)
+	            return;
 
-					DrawChildBeginsAtParentEndLines();
-					break;
-			}
+	        switch (Dependency.Type)
+	        {
+	            default:
+	            case DependencyType.ChildBeginsAtParentEnd:
 
+	                DrawChildBeginsAtParentEndLines();
+	                break;
+	        }
+	    }
 
-		}
-
-		private void DrawChildBeginsAtParentEndLines()
+	    private void DrawChildBeginsAtParentEndLines()
 		{
 			bool isEquivolent = TimeUnitScalar.IsEquivolent(Dependency.ChildNode.StartDate, Dependency.ParentNode.EndDate, ParentPresenter.ParentPanel.ParentGanttChart.TimespanHeader.RowsPresenter.Children.Cast<TimespanHeaderRow>().Last().TimeUnit);
 			bool inverted = isEquivolent || (Dependency.ChildNode.StartDate <= Dependency.ParentNode.EndDate);

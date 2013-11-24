@@ -309,8 +309,6 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="gantt:HeaderGanttItem" >
-
-
                     <Grid Margin="0,4,0,2" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" x:Name="NodeElement" >
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -350,7 +348,7 @@
                         <ToolTipService.ToolTip>
                             <ToolTip Content="{TemplateBinding ToolTipContent}" ContentTemplate="{TemplateBinding ToolTipContentTemplate}" />
                         </ToolTipService.ToolTip>
-                        <Rectangle  x:Name="dots"
+                        <Rectangle x:Name="dots"
                                    IsHitTestVisible="False"
                                    StrokeThickness="2"
                                    StrokeDashArray="1 1"
@@ -360,8 +358,8 @@
                                    Grid.ColumnSpan="3"
                                    Grid.RowSpan="2"
                                     />
-
                         <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="0" Background="{TemplateBinding Background}" Grid.ColumnSpan="3" />
+                        
                         <Polygon Grid.Column="0" x:Name="LeftSide" Grid.Row="1" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="0" Fill="{TemplateBinding Background}" >
                             <Polygon.Points >
                                 <Point X="0" Y="0" />
@@ -376,12 +374,9 @@
                                 <Point X="0" Y="0" />
                                 <Point X="5" Y="5" />
                                 <Point X="5" Y="0" />
-
                             </Polygon.Points>
                         </Polygon>
-
                     </Grid>
-
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

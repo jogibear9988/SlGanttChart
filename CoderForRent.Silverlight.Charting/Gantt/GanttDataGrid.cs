@@ -100,7 +100,7 @@ namespace CoderForRent.Charting.Gantt
         void Row_Loaded(object sender, RoutedEventArgs e)
         {
             var row = (DataGridRow) sender;
-            row.Loaded += Row_Loaded;
+            row.Loaded -= Row_Loaded;
 
             int rowIndex = row.GetIndex();
 
@@ -112,8 +112,7 @@ namespace CoderForRent.Charting.Gantt
 
 		void GanttDataGrid_RowExpandedChanged(object sender, RowExpandedChangedEventArgs e)
 		{
-
-			IGanttNode node = (e.Row.DataContext as IGanttNode);
+            IGanttNode node = (e.Row.DataContext as IGanttNode);
 			node.Expanded = e.IsExpanded;
 
 			int index = LastExpanderClickedIndex = Nodes.IndexOf(node);

@@ -118,8 +118,6 @@ namespace CoderForRent.Charting.Gantt
                     TimespanHeader.CurrentTime = value;
 
                 }
-
-
             }
         }
         /// <summary>

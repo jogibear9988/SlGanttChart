@@ -13,17 +13,17 @@ namespace CoderForRent.Charting.Gantt
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
-        public event EventHandler<PropertyChangedEventArgs> PropertyChanging;
+        public event EventHandler<PropertyChangedEventArgs> PropertyChanging;        
         protected virtual void RaisePropertyChanging(string prop)
         {
             RaisePropertyChanging(new PropertyChangedEventArgs(prop));
         }
+
         protected virtual void RaisePropertyChanging(PropertyChangedEventArgs e)
         {
             if (PropertyChanging != null)
                 PropertyChanging(this, e);
         }
-
 
 
         private DateTime _StartDate;
@@ -76,8 +76,5 @@ namespace CoderForRent.Charting.Gantt
 
         //TODO: Find a way to implement this
         public Brush BackgroundBrush { get; set; }
-
-
-
     }
 }

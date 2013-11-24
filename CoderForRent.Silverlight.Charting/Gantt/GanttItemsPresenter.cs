@@ -22,10 +22,12 @@ namespace CoderForRent.Charting.Gantt
 		#endregion
 
 		#region Constructors and overrides
-		public GanttItemsPresenter()
+		
+        public GanttItemsPresenter()
         {
             this.UseLayoutRounding = false;
         }
+
         protected override Size ArrangeOverride(Size finalSize)
         {
             Debug.WriteLine("GanttItemsPresenter.ArrangeOverride()");
@@ -51,9 +53,7 @@ namespace CoderForRent.Charting.Gantt
 						x3 = ParentRow.ParentPanel.ConvertDateToPosition(nextNode.StartDate);
 						width += x3 - x2;
 					}
-				}
-
-		
+				}		
 
                 if(width > 0)
                     gi.Arrange(new Rect(x1, 0, width, ParentRow.ActualHeight));

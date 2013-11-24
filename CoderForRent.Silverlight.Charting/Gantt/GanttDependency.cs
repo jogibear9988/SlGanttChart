@@ -6,6 +6,7 @@ namespace CoderForRent.Charting.Gantt
 	{
 		ChildBeginsAtParentEnd
 	}
+
 	public class GanttDependency
 	{
 		public event EventHandler TypeChanged;
@@ -32,8 +33,6 @@ namespace CoderForRent.Charting.Gantt
 					RaiseTypeChanged(EventArgs.Empty);
 				}
 			}
-		}
-
-		  
+		}		  
 	}
 }

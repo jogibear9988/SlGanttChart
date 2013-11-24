@@ -265,7 +265,6 @@ namespace CoderForRent.Charting.Gantt
 
         void ChildNode_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-
             IGanttNode node = sender as IGanttNode;
 
             if (e.PropertyName == "StartDate" || e.PropertyName == "EndDate")
@@ -282,17 +281,15 @@ namespace CoderForRent.Charting.Gantt
 
         public void _ChildNodes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Replace || e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
             {
                 foreach (IGanttNode node in e.NewItems)
                 {
                     node.ParentNode = this;
                     node.PropertyChanged += ChildNode_PropertyChanged;
                 }
-
-
             }
-            else
+            else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Replace || e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
             {
                 foreach (IGanttNode node in e.OldItems)
                 {
@@ -300,9 +297,6 @@ namespace CoderForRent.Charting.Gantt
                 }
             }
             UpdateDatesToChildren();
-
-
-
         }
 
         private void AddFirstSectionIfNecessary()
@@ -321,8 +315,7 @@ namespace CoderForRent.Charting.Gantt
             if (PropertyChanged != null)
                 PropertyChanged(this, e);
         }
+
         #endregion
-
-
     }
 }
