@@ -259,6 +259,8 @@ namespace CoderForRent.Charting.Gantt
         void GanttItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             DragState = DragState.None;
+
+            this.ReleaseMouseCapture();
         }
         void GanttItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -278,6 +280,8 @@ namespace CoderForRent.Charting.Gantt
                 {
                     DragState = DragState.Whole;
                 }
+
+                this.CaptureMouse();                
             }
         }
         void GanttItem_MouseMove(object sender, MouseEventArgs e)

@@ -327,7 +327,6 @@ namespace CoderForRent.Charting.Gantt
             GridSplitter.MouseLeftButtonUp += new MouseButtonEventHandler(GridSplitter_MouseLeftButtonUp);
 
             SetupVerticalScrollbar();
-
         }
 
 

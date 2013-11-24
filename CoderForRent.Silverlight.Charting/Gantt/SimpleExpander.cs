@@ -47,7 +47,9 @@ namespace CoderForRent.Charting.Gantt
         #endregion
 
         #region Properties
+
         public bool UseAnimation { get; set; }
+
         #endregion
 
         #region Events
@@ -81,9 +83,9 @@ namespace CoderForRent.Charting.Gantt
         {
             base.OnApplyTemplate();
 
-            CollapseAnimation = (DoubleAnimation)GetTemplateChild("CollapseAnimation");
-            ExpandAnimation = (DoubleAnimation)GetTemplateChild("ExpandAnimation");
-            ExpanderRotate = (RotateTransform)(GetTemplateChild("Triangle") as Polygon).RenderTransform ;
+            CollapseAnimation = (DoubleAnimation) GetTemplateChild("CollapseAnimation");
+            ExpandAnimation = (DoubleAnimation) GetTemplateChild("ExpandAnimation");
+            ExpanderRotate = (RotateTransform) (GetTemplateChild("Triangle") as Polygon).RenderTransform;
         }
 
     
