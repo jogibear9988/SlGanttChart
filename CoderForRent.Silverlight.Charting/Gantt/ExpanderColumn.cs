@@ -5,7 +5,6 @@ namespace CoderForRent.Charting.Gantt
 {
 	public class ExpanderColumn : DataGridBoundColumn
 	{
-
 		protected override FrameworkElement GenerateEditingElement(DataGridCell cell, object dataItem)
 		{
 			Border b = new Border();

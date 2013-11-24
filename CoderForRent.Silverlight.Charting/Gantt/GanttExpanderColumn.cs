@@ -20,6 +20,11 @@ namespace CoderForRent.Charting.Gantt
 	}
 	public class GanttExpanderColumn : DataGridTextColumn
 	{
+	    public GanttExpanderColumn()
+	    {
+	        
+	    }
+
 		public event EventHandler<RowExpandedChangedEventArgs> RowExpandedChanged;
 		protected void RaiseRowExpandedChanged(RowExpandedChangedEventArgs e)
 		{
@@ -33,7 +38,13 @@ namespace CoderForRent.Charting.Gantt
 			return panel.Children[1] as SimpleExpander;
 
 		}
-		protected override FrameworkElement GenerateEditingElement(DataGridCell cell, object dataItem)
+
+	    protected override void RefreshCellContent(FrameworkElement element, string propertyName)
+	    {
+	        base.RefreshCellContent(element, propertyName);
+	    }
+
+	    protected override FrameworkElement GenerateEditingElement(DataGridCell cell, object dataItem)
 		{
 			//StackPanel panel = GeneratePanel(dataItem);
 			//panel.Children.Add(base.GenerateEditingElement(cell, dataItem));

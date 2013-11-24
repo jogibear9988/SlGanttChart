@@ -66,9 +66,9 @@ namespace CoderForRent.Charting.Gantt
 		#region Constructors and overrides
 		public GanttDataGrid()
 		{
-			this.Loaded += new RoutedEventHandler(GanttDataGrid_Loaded);
-			this.LoadingRow += new EventHandler<DataGridRowEventArgs>(GanttDataGrid_LoadingRow);
-			this.SelectedIndex = -1;
+			this.Loaded += GanttDataGrid_Loaded;
+			this.LoadingRow += GanttDataGrid_LoadingRow;
+            this.SelectedIndex = -1;
 		}
 		public override void OnApplyTemplate()
 		{
@@ -94,15 +94,22 @@ namespace CoderForRent.Charting.Gantt
 		#region Event handling functions
 		void GanttDataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
 		{
-			IGanttNode node = e.Row.DataContext as IGanttNode;
-			int rowIndex = e.Row.GetIndex();
-
-			SimpleExpander ex = ((GanttExpanderColumn)Columns[0]).GetExpander(e.Row);
-
-			if (ex.UseAnimation = LastExpanderClickedIndex == rowIndex)
-				LastExpanderClickedIndex = -1;
-
+			e.Row.Loaded += Row_Loaded;			
 		}
+
+        void Row_Loaded(object sender, RoutedEventArgs e)
+        {
+            var row = (DataGridRow) sender;
+            row.Loaded += Row_Loaded;
+
+            int rowIndex = row.GetIndex();
+
+            SimpleExpander ex = ((GanttExpanderColumn)Columns[0]).GetExpander(row);
+
+            if (ex.UseAnimation = LastExpanderClickedIndex == rowIndex)
+                LastExpanderClickedIndex = -1;
+        }
+
 		void GanttDataGrid_RowExpandedChanged(object sender, RowExpandedChangedEventArgs e)
 		{
 
