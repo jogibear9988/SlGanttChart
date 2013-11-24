@@ -106,7 +106,7 @@ namespace CoderForRent.Charting.Gantt
 
 	    private Size _oldSize;
         private Size _oldRetSize;
-	    private int _sameSizeCnt = 0;
+	    internal int _sameSizeCnt = 0;
 		protected override Size ArrangeOverride(Size finalSize)
 		{
             Debug.WriteLine("GanttRow.ArrangeOverride(" + finalSize.ToString() + ")");
@@ -173,7 +173,9 @@ namespace CoderForRent.Charting.Gantt
 		}
 		private void GanttRow_MouseMove(object sender, MouseEventArgs e)
 		{
-			if (_ProcessingMove || IsReadOnly)
+            _sameSizeCnt = 1;
+
+            if (_ProcessingMove || IsReadOnly)
 				return;
 			else
 				_ProcessingMove = true;
@@ -222,6 +224,7 @@ namespace CoderForRent.Charting.Gantt
 
 					if (item.DragState == DragState.ResizeLeft)
 					{
+
 						ParentPanel.RaiseItemChanging(new GanttItemEventArgs(item));
                         DateTime newDate = item.Section.StartDate.Add(ts);
 
@@ -237,8 +240,7 @@ namespace CoderForRent.Charting.Gantt
 					}
 					else if (item.DragState == DragState.ResizeRight)
 					{
-
-						ParentPanel.RaiseItemChanging(new GanttItemEventArgs(item));
+					    ParentPanel.RaiseItemChanging(new GanttItemEventArgs(item));
                         DateTime newDate = item.Section.EndDate.Add(ts);
 
                         if (newDate > item.Section.StartDate)
@@ -254,7 +256,7 @@ namespace CoderForRent.Charting.Gantt
 					}
 					else if (item.DragState == DragState.Whole)
 					{
-						ParentPanel.RaiseItemChanging(new GanttItemEventArgs(item));
+                        ParentPanel.RaiseItemChanging(new GanttItemEventArgs(item));
 
                         DateTime newStart = item.Section.StartDate.Add(ts);
 						DateTime newEnd = item.Section.EndDate.Add(ts);
@@ -342,6 +344,8 @@ namespace CoderForRent.Charting.Gantt
 		#region Internal/Public functions
 		internal void Invalidate()
 		{
+		    _sameSizeCnt = 1;
+
             Debug.WriteLine("GanttRow.Invalidate()");
 			if (ItemsPresenter == null)
 				return;

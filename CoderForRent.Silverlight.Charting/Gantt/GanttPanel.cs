@@ -338,6 +338,7 @@ namespace CoderForRent.Charting.Gantt
 				GanttRow row = RowPresenter.Children[i] as GanttRow;
 				row.BorderBrush = ParentGanttChart.GanttRowBorderBrush;
 				row.Background = Background;
+			    row._sameSizeCnt = 1;
 
 				if (i + TopNodeIndex < Nodes.Count)
 				{
