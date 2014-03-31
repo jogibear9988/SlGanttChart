@@ -5,16 +5,30 @@
  * */
 
 using System;
+using System.Windows.Controls.Primitives;
 
 namespace CoderForRent.Charting.Core
 {
     public class TimeUnitScalar
     {
+        private static double _scaleFactor = 80;
+        public static double ScaleFactor
+        {
+            get { return _scaleFactor; }
+            set { _scaleFactor = value; }
+        }
+
         public static double ConvertToPixels(DateTime CurrentTime, TimeUnits timeUnit)
         {
+            
+
+
             double TickWidth = 2.38E-11;
-            double HourWidth = TickWidth * 8.64E11 / 24d;
+            double MinuteWidth = ((TickWidth*8.64E11/24d)/60) * ScaleFactor;
+
+            double HourWidth = MinuteWidth * 60;
             double DayWidth = HourWidth * 24;
+           
 
             switch (timeUnit)
             {
@@ -35,7 +49,9 @@ namespace CoderForRent.Charting.Core
                 case TimeUnits.Days:
                     return DayWidth * Zoom.Value;
                 case TimeUnits.Hours:
-                    return HourWidth * Zoom.Value;                    
+                    return HourWidth * Zoom.Value;
+                case TimeUnits.Minutes:
+                    return MinuteWidth * Zoom.Value;   
                 default:
                     return TickWidth *  Zoom.Value;
     
@@ -139,6 +155,9 @@ namespace CoderForRent.Charting.Core
 
 				case TimeUnits.Hours:
 					return Math.Abs(diff.TotalHours) < 1;
+
+                case TimeUnits.Minutes:
+                    return Math.Abs(diff.TotalMinutes) < 1;
 
 				default:
 				case TimeUnits.Days:

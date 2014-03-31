@@ -180,6 +180,9 @@ namespace CoderForRent.Charting.TimespanHeader
                 case TimeUnits.Hours:
                     CellFormat = "HH";
                     break;
+                case TimeUnits.Minutes:
+                    CellFormat = "mm";
+                    break;
                 
             }
         }

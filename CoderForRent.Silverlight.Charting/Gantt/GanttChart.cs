@@ -201,20 +201,17 @@ namespace CoderForRent.Charting.Gantt
             }
         }
 
-        private TimeUnits _TopBarTimeUnits;
-        public TimeUnits TopBarTimeUnits
+        public TimeUnits Bar1TimeUnits
         {
             get
             {
                 if (TimespanHeader != null)
                     return (TimespanHeader.RowsPresenter.Children[0] as TimespanHeader.TimespanHeaderRow).TimeUnit;
 
-                return _TopBarTimeUnits;
+                return TimeUnits.Ticks;
             }
             set
             {
-                _TopBarTimeUnits = value; 
-                
                 if (TimespanHeader != null)
                 {
                     (TimespanHeader.RowsPresenter.Children[0] as TimespanHeader.TimespanHeaderRow).TimeUnit = value;
@@ -226,23 +223,42 @@ namespace CoderForRent.Charting.Gantt
             }
         }
 
-        private TimeUnits _BottomBarTimeUnits;
-        public TimeUnits BottomBarTimeUnits
+        public TimeUnits Bar2TimeUnits
         {
             get
             {
                 if (TimespanHeader != null)
                     return (TimespanHeader.RowsPresenter.Children[1] as TimespanHeader.TimespanHeaderRow).TimeUnit;
 
-                return _BottomBarTimeUnits;
+                return TimeUnits.Ticks;
             }
             set
             {
-                _BottomBarTimeUnits = value;
-
                 if (TimespanHeader != null)
                 {
                     (TimespanHeader.RowsPresenter.Children[1] as TimespanHeader.TimespanHeaderRow).TimeUnit = value;
+                    {
+                        TimespanHeader.InvalidateMeasure();
+                        TimespanHeader.InvalidateArrange();
+                    }
+                }
+            }
+        }
+
+        public TimeUnits Bar3TimeUnits
+        {
+            get
+            {
+                if (TimespanHeader != null)
+                    return (TimespanHeader.RowsPresenter.Children[2] as TimespanHeader.TimespanHeaderRow).TimeUnit;
+
+                return TimeUnits.Ticks;
+            }
+            set
+            {
+                if (TimespanHeader != null)
+                {
+                    (TimespanHeader.RowsPresenter.Children[2] as TimespanHeader.TimespanHeaderRow).TimeUnit = value;
                     {
                         TimespanHeader.InvalidateMeasure();
                         TimespanHeader.InvalidateArrange();

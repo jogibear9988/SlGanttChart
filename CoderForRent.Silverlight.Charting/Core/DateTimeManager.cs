@@ -38,6 +38,9 @@ namespace CoderForRent.Charting.Core
                 case TimeUnits.Hours:
                     result = instance.AddHours(increment);
                     break;
+                case TimeUnits.Minutes:
+                    result = instance.AddMinutes(increment);
+                    break;
             }
 
             return result;

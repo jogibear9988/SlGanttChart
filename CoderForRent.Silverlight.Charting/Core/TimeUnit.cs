@@ -15,6 +15,7 @@ namespace CoderForRent.Charting.Core
         Weeks = 2,
         Days = 1,
         Hours = 0,
+        Minutes = 5,
         Ticks = -1
 
 
