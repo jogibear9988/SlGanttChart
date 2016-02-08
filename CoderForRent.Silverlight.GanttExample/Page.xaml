@@ -13,7 +13,7 @@
         </LinearGradientBrush>
     </UserControl.Resources>
     <Grid x:Name="LayoutRoot" Background="AliceBlue">
-        <gantt:GanttChart x:Name="gantt" Width="Auto" Height="Auto" IsReadOnly="False"  Margin="10" TopBarTimeUnits="Months" BottomBarTimeUnits="Days">
+        <gantt:GanttChart x:Name="gantt" Width="Auto" Height="Auto" IsReadOnly="False"  Margin="10" Bar1TimeUnits="Months" Bar2TimeUnits="Days">
             <gantt:GanttChart.ToolTipContentTemplate>
                 <DataTemplate>
                     <Grid>

@@ -10,9 +10,9 @@
                           Width="Auto"
                           Height="Auto"
                           Margin="10"
-                          BottomBarTimeUnits="Minutes"
+                          Bar1TimeUnits="Minutes"
                           IsReadOnly="False"
-                          TopBarTimeUnits="Hours">
+                          Bar2TimeUnits="Hours">
             <gantt:GanttChart.ToolTipContentTemplate>
                 <DataTemplate>
                     <Grid>

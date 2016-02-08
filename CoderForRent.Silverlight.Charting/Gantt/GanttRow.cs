@@ -152,7 +152,7 @@ namespace CoderForRent.Charting.Gantt
 		private void GanttRow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 		{
 			if (!IsReadOnly)
-				_DragStart = e.GetPosition(UIHelpers.RootUI);
+				_DragStart = e.GetPosition(this.RootUI());
 		}
 		private void GanttRow_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
@@ -180,7 +180,7 @@ namespace CoderForRent.Charting.Gantt
 			else
 				_ProcessingMove = true;
 
-            Point cursorPosition = e.GetPosition(UIHelpers.RootUI);
+            Point cursorPosition = e.GetPosition(this.RootUI());
 
 			List<GanttItem> items = ItemsPresenter.Children.OfType<GanttItem>().ToList();
 
@@ -188,7 +188,7 @@ namespace CoderForRent.Charting.Gantt
 			{
 				GanttItem item = items[i];
 
-                GeneralTransform gt = item.TransformToVisual(UIHelpers.RootUI);
+                GeneralTransform gt = item.TransformToVisual(this.RootUI());
 				Point itemPosition = gt.Transform(new Point(0, 0));
 
 				double distance = 0d;
@@ -280,7 +280,7 @@ namespace CoderForRent.Charting.Gantt
 						ParentPanel.RaiseItemChanged(new GanttItemEventArgs(item));
 					}
 
-                    _DragStart = e.GetPosition(UIHelpers.RootUI);
+                    _DragStart = e.GetPosition(this.RootUI());
 				}
 			}
 

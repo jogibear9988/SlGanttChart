@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace CoderForRent.Charting.Core
 {
@@ -37,17 +38,78 @@ namespace CoderForRent.Charting.Core
             }
         }
 
-        public static FrameworkElement RootUI
+        public static FrameworkElement RootUI(this FrameworkElement element)
         {
-            get
-            {
+
 #if SILVERLIGHT
-                return Application.Current.RootVisual as FrameworkElement;
+            return Application.Current.RootVisual as FrameworkElement;
 #else
-                return Application.Current.MainWindow;
+            return element.TryFindRoot();
 #endif
+        }
+
+#if !SILVERLIGHT
+        public static FrameworkElement TryFindRoot(this FrameworkElement child)
+        {
+            var ch = child;
+            var old = child;
+
+            while (ch!=null)
+            {
+                old = ch;
+                ch = ch.TryFindParent<FrameworkElement>();
+            }
+
+            return old;
+        }
+
+        public static T TryFindParent<T>(this DependencyObject child) where T : class
+        {
+            //get parent item
+            DependencyObject parentObject = GetParentObject(child);
+
+            //we've reached the end of the tree
+            if (parentObject == null) return null;
+
+            //check if the parent matches the type we're looking for
+            T parent = parentObject as T;
+            if (parent != null)
+            {
+                return parent;
+            }
+            else
+            {
+                //use recursion to proceed with next level
+                return TryFindParent<T>(parentObject);
             }
         }
-    }
 
+        public static DependencyObject GetParentObject(this DependencyObject child)
+        {
+            if (child == null) return null;
+
+            //handle content elements separately
+            ContentElement contentElement = child as ContentElement;
+            if (contentElement != null)
+            {
+                DependencyObject parent = ContentOperations.GetParent(contentElement);
+                if (parent != null) return parent;
+
+                FrameworkContentElement fce = contentElement as FrameworkContentElement;
+                return fce != null ? fce.Parent : null;
+            }
+
+            //also try searching for parent in framework elements (such as DockPanel, etc)
+            FrameworkElement frameworkElement = child as FrameworkElement;
+            if (frameworkElement != null)
+            {
+                DependencyObject parent = frameworkElement.Parent;
+                if (parent != null) return parent;
+            }
+
+            //if it's not a ContentElement/FrameworkElement, rely on VisualTreeHelper
+            return VisualTreeHelper.GetParent(child);
+        }
+#endif
+    }
 }

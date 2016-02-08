@@ -305,7 +305,7 @@ namespace CoderForRent.Charting.Gantt
             TimespanHeader = (TimespanHeader.TimespanHeader)GetTemplateChild("TimespanElement");
             TimespanHeader.CurrentTimeChanged += Timespan_CurrentTimeChanged;
             TimespanHeader.ZoomFactorChanged += Timespan_ZoomFactorChanged;
-            TimespanHeader.Loaded += new RoutedEventHandler(TimespanHeader_Loaded);
+            //TimespanHeader.Loaded += new RoutedEventHandler(TimespanHeader_Loaded);
 
 
             Panel = (GanttPanel)GetTemplateChild("PanelElement");
@@ -495,17 +495,24 @@ namespace CoderForRent.Charting.Gantt
                 _CurrentTimeChangedLocally = false;
 
         }
-        private void TimespanHeader_Loaded(object sender, RoutedEventArgs e)
-        {
-            if(_TopBarTimeUnits != TopBarTimeUnits)
-                (TimespanHeader.RowsPresenter.Children[0] as TimespanHeader.TimespanHeaderRow).TimeUnit = _TopBarTimeUnits;
 
-            if(_BottomBarTimeUnits != BottomBarTimeUnits)
-                (TimespanHeader.RowsPresenter.Children[1] as TimespanHeader.TimespanHeaderRow).TimeUnit = _BottomBarTimeUnits;
+        //private TimeUnits _Bar1TimeUnits;
+        //private TimeUnits _Bar2TimeUnits;
+        //private TimeUnits _Bar3TimeUnits;
+        //private void TimespanHeader_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    if(_Bar1TimeUnits != Bar1TimeUnits)
+        //        (TimespanHeader.RowsPresenter.Children[0] as TimespanHeader.TimespanHeaderRow).TimeUnit = Bar1TimeUnits;
 
-            //Panel.CurrentTime = TimespanHeader.CurrentTime;
+        //    if(_Bar2TimeUnits != Bar2TimeUnits)
+        //        (TimespanHeader.RowsPresenter.Children[1] as TimespanHeader.TimespanHeaderRow).TimeUnit = Bar2TimeUnits;
 
-        }
+        //    if (_Bar3TimeUnits != Bar3TimeUnits)
+        //        (TimespanHeader.RowsPresenter.Children[2] as TimespanHeader.TimespanHeaderRow).TimeUnit = Bar3TimeUnits;
+
+        //    //Panel.CurrentTime = TimespanHeader.CurrentTime;
+
+        //}
         #endregion
 
     }
